@@ -1,8 +1,16 @@
 <template>
   <div class="about">
-    <h1>This is the main page</h1>
+    <CalcList />
   </div>
 </template>
+
+<script lang="ts">
+import CalcList from '@/components/CalcList.vue'
+
+export default {
+  components: { CalcList }
+}
+</script>
 
 <style>
 @media (min-width: 1024px) {

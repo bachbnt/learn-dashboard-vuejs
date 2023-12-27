@@ -4,6 +4,12 @@ const i18n = createI18n({
   locale: 'vi',
   messages: {
     en: {
+      feature: 'Tính năng',
+      about: 'Về',
+      stock: 'Chứng khoán',
+      crypto: 'Tiền ảo',
+      analytic: 'Thống kê',
+      calculator: 'Máy tính',
       pTitle: 'Giá trước điều chỉnh',
       cTitle: 'Cổ tức bằng tiền mặt',
       p1Title: 'Giá phát hành thêm',
@@ -12,6 +18,12 @@ const i18n = createI18n({
       _pTitle: 'Giá sau điều chỉnh'
     },
     vi: {
+      feature: 'Feature',
+      about: 'About',
+      stock: 'Stock',
+      crypto: 'Crypto',
+      analytic: 'Analytic',
+      calculator: 'Calculator',
       pTitle: 'Giá trước điều chỉnh',
       cTitle: 'Cổ tức bằng tiền mặt',
       p1Title: 'Giá phát hành thêm',

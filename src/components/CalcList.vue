@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <CalcItem :calc="store.calculation[CalcSymbol.P]" :title="$t('pTitle')" @callback="onInput" />
     <CalcItem :calc="store.calculation[CalcSymbol.C]" :title="$t('cTitle')" @callback="onInput" />
     <CalcItem :calc="store.calculation[CalcSymbol.P1]" :title="$t('p1Title')" @callback="onInput" />
@@ -32,4 +32,9 @@ export default {
   }
 }
 </script>
-<style lang=""></style>
+<style>
+.container {
+  display: flex;
+  flex-direction: column;
+}
+</style>
