@@ -27,12 +27,6 @@ export default {
       this.store.updateCalculation(symbol, value)
     }
   },
-  // setup() {
-  //   const store = useCalculationStore()
-  //   return {
-  //     store
-  //   }
-  // }
   computed: {
     store: () => useCalculationStore()
   }
