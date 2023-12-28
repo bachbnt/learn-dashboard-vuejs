@@ -5,4 +5,5 @@ export type ICalc = {
   value: number
   symbol: CalcSymbol
   unit: CalcUnit
+  title: string
 }

@@ -15,7 +15,12 @@ const i18n = createI18n({
       p1Title: 'Giá phát hành thêm',
       r1Title: 'Tỉ lệ phát hành thêm',
       r2Title: 'Tỉ lệ cổ tức bằng cổ phiếu',
-      _pTitle: 'Giá sau điều chỉnh'
+      _pTitle: 'Giá sau điều chỉnh',
+      page404Code: '404',
+      page404Title: 'Page not found',
+      page404Content: 'Sorry, we couldn’t find the page you’re looking for.',
+      page404CTA1: 'Go back home',
+      page404CTA2: 'Contact support'
     },
     vi: {
       feature: 'Feature',
@@ -29,7 +34,12 @@ const i18n = createI18n({
       p1Title: 'Giá phát hành thêm',
       r1Title: 'Tỉ lệ phát hành thêm',
       r2Title: 'Tỉ lệ cổ tức bằng cổ phiếu',
-      _pTitle: 'Giá sau điều chỉnh'
+      _pTitle: 'Giá sau điều chỉnh',
+      page404Code: '404',
+      page404Title: 'Page not found',
+      page404Content: 'Sorry, we couldn’t find the page you’re looking for.',
+      page404CTA1: 'Go back home',
+      page404CTA2: 'Contact support'
     }
   }
 })

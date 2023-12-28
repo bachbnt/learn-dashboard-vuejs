@@ -28,6 +28,11 @@ const router = createRouter({
       path: '/crypto',
       name: 'crypto',
       component: () => import('../views/CryptoView.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'crypto',
+      component: () => import('../views/404View.vue')
     }
   ]
 })

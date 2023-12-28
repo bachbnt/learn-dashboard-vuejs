@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="h-full w-full flex">
     <CalcList />
   </div>
 </template>
@@ -11,13 +11,3 @@ export default {
   components: { CalcList }
 }
 </script>
-
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>

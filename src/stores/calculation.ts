@@ -10,32 +10,38 @@ export const useCalculationStore = defineStore('calculation', () => {
     [CalcSymbol.P]: {
       value: 0,
       symbol: CalcSymbol.P,
-      unit: CalcUnit.CURRENCY
+      unit: CalcUnit.CURRENCY,
+      title: 'pTitle'
     },
     [CalcSymbol.C]: {
       value: 0,
       symbol: CalcSymbol.C,
-      unit: CalcUnit.CURRENCY
+      unit: CalcUnit.CURRENCY,
+      title: 'cTitle'
     },
     [CalcSymbol.P1]: {
       value: 0,
       symbol: CalcSymbol.P1,
-      unit: CalcUnit.CURRENCY
+      unit: CalcUnit.CURRENCY,
+      title: 'p1Title'
     },
     [CalcSymbol.R1]: {
       value: 0,
       symbol: CalcSymbol.R1,
-      unit: CalcUnit.PERCENT
+      unit: CalcUnit.PERCENT,
+      title: 'r1Title'
     },
     [CalcSymbol.R2]: {
       value: 0,
       symbol: CalcSymbol.R2,
-      unit: CalcUnit.PERCENT
+      unit: CalcUnit.PERCENT,
+      title: 'r2Title'
     },
     [CalcSymbol._P]: {
       value: 0,
       symbol: CalcSymbol._P,
-      unit: CalcUnit.CURRENCY
+      unit: CalcUnit.CURRENCY,
+      title: '_pTitle'
     }
   })
 
@@ -54,7 +60,8 @@ export const useCalculationStore = defineStore('calculation', () => {
   })
 
   const updateCalculation = (field: CalcSymbol, value: number) => {
-    calculation.value[field].value = round(value)
+    const precision = calculation.value[field].unit === CalcUnit.PERCENT ? 2 : 0
+    calculation.value[field].value = round(value, precision)
   }
 
   return {

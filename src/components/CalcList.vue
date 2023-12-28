@@ -1,11 +1,13 @@
 <template>
-  <div class="container">
-    <CalcItem :calc="store.calculation[CalcSymbol.P]" :title="$t('pTitle')" @callback="onInput" />
-    <CalcItem :calc="store.calculation[CalcSymbol.C]" :title="$t('cTitle')" @callback="onInput" />
-    <CalcItem :calc="store.calculation[CalcSymbol.P1]" :title="$t('p1Title')" @callback="onInput" />
-    <CalcItem :calc="store.calculation[CalcSymbol.R1]" :title="$t('r1Title')" @callback="onInput" />
-    <CalcItem :calc="store.calculation[CalcSymbol.R2]" :title="$t('r2Title')" @callback="onInput" />
-    <CalcItem :calc="store.result" :title="$t('_pTitle')" disabled />
+  <div class="flex flex-col bg-amber-200">
+    <CalcItem
+      v-for="item in Object.values(store.calculation)"
+      :key="item.symbol"
+      :calc="item.symbol === CalcSymbol._P ? store.result : item"
+      :title="$t(item.title)"
+      @callback="onInput"
+      :disabled="item.symbol === CalcSymbol._P"
+    />
   </div>
 </template>
 <script lang="ts">
@@ -32,9 +34,4 @@ export default {
   }
 }
 </script>
-<style>
-.container {
-  display: flex;
-  flex-direction: column;
-}
-</style>
+<style></style>

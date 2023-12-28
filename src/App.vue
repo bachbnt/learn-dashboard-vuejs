@@ -1,10 +1,8 @@
 <template>
-  <div class="container">
+  <body class="h-full w-full flex flex-col min-h-screen">
     <CalcHeader />
-    <main>
-      <RouterView />
-    </main>
-  </div>
+    <RouterView />
+  </body>
 </template>
 
 <script setup lang="ts">
@@ -12,9 +10,4 @@ import { RouterView } from 'vue-router'
 import CalcHeader from '@/components/CalcHeader.vue'
 </script>
 
-<style>
-.container {
-  display: flex;
-  min-height: 100vh;
-}
-</style>
+<style></style>
