@@ -4,7 +4,7 @@
       <p class="text-white text-center">{{ calc.symbol }}</p>
     </div>
     <div class="w-72 h-12 flex justify-center items-center">
-      <p>{{ title }} ({{ calc.unit }})</p>
+      <p>{{ title }}</p>
     </div>
     <div class="w-36 h-12 px-2 py-2 flex justify-center items-center">
       <CalcInput :value="calc.value" :unit="calc.unit" :disabled="disabled" @input="handleInput" />
