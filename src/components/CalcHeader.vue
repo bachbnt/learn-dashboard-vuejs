@@ -25,7 +25,7 @@
           <PopoverButton
             class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
           >
-            Feature
+            {{ $t('feature') }}
             <ChevronDownIcon class="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
           </PopoverButton>
 
@@ -57,7 +57,7 @@
                   </div>
                   <div class="flex-auto">
                     <RouterLink :to="item.href" class="block font-semibold text-gray-900">
-                      {{ item.name }}
+                      {{ $t(item.name) }}
                       <span class="absolute inset-0" />
                     </RouterLink>
                     <p class="mt-1 text-gray-600">{{ item.description }}</p>
@@ -76,7 +76,7 @@
                     class="h-5 w-5 flex-none text-gray-400"
                     aria-hidden="true"
                   />
-                  {{ item.name }}
+                  {{ $t(item.name) }}
                 </a>
               </div>
             </PopoverPanel>
@@ -132,7 +132,7 @@
                     as="a"
                     :href="item.href"
                     class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >{{ item.name }}</DisclosureButton
+                    >{{ $t(item.name) }}</DisclosureButton
                   >
                 </DisclosurePanel>
               </Disclosure>
@@ -180,13 +180,13 @@ import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/vue/20/so
 
 const features = [
   {
-    name: 'Analytics',
+    name: 'analytic',
     description: 'Analyze your stocks',
     href: '#',
     icon: ChartPieIcon
   },
   {
-    name: 'Calculator',
+    name: 'calculator',
     description: 'Calculate your dividend',
     href: '/calculator',
     icon: CalculatorIcon
