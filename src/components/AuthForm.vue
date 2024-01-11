@@ -9,6 +9,7 @@
       :type="field.type"
       :autocomplete="field.autocomplete"
       required="true"
+      v-model="fieldModels[field.name].value"
     />
     <slot name="above-button"></slot>
     <PrimaryButton class="mt-8" :title="buttonTitle" type="submit" />
@@ -21,9 +22,14 @@ import FieldInput from './FieldInput.vue'
 import PrimaryButton from './PrimaryButton.vue'
 export default {
   data() {
+    const fieldModels = this.fields.reduce((obj, item) => {
+      return {
+        ...obj,
+        [item.name]: { name: item.name, value: '' }
+      }
+    }, {})
     return {
-      email: '',
-      password: ''
+      fieldModels
     }
   },
   props: {
@@ -42,7 +48,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$emit('submit-callback', this.email, this.password)
+      this.$emit('submit-callback', this.fieldModels)
     }
   }
 }

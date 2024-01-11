@@ -1,15 +1,22 @@
 <template>
-  <div class="about">
+  <div>
     <h1>This is the main page</h1>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+<script lang="ts">
+import { useAuthStore } from '@/stores/auth'
+import { RoutePath } from '@/router/route'
+
+export default {
+  mounted() {
+    if (!this.store.checkAuth()) {
+      this.$router.push(RoutePath.SIGN_IN)
+    }
+  },
+  computed: {
+    store: () => useAuthStore()
   }
 }
-</style>
+</script>
+<style></style>

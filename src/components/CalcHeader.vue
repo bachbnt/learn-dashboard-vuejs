@@ -6,7 +6,6 @@
     >
       <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5">
-          <span class="sr-only">Your Company</span>
           <img class="h-8 w-auto" src="/logo_vue.png" alt="" />
         </a>
       </div>
@@ -16,7 +15,6 @@
           class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
           @click="mobileMenuOpen = true"
         >
-          <span class="sr-only">Open main menu</span>
           <Bars3Icon class="h-6 w-6" aria-hidden="true" />
         </button>
       </div>
@@ -82,25 +80,31 @@
             </PopoverPanel>
           </transition>
         </Popover>
-        <RouterLink :to="'/about'" class="text-sm font-semibold leading-6 text-gray-900">
+        <RouterLink :to="RoutePath.ABOUT" class="text-sm font-semibold leading-6 text-gray-900">
           {{ $t('about') }}
         </RouterLink>
-        <RouterLink :to="'/stock'" class="text-sm font-semibold leading-6 text-gray-900">
+        <RouterLink :to="RoutePath.STOCK" class="text-sm font-semibold leading-6 text-gray-900">
           {{ $t('stock') }}
         </RouterLink>
-        <RouterLink :to="'/crypto'" class="text-sm font-semibold leading-6 text-gray-900">
+        <RouterLink :to="RoutePath.CRYPTO" class="text-sm font-semibold leading-6 text-gray-900">
           {{ $t('crypto') }}
         </RouterLink>
+        <button
+          @click="onClickSignOut"
+          v-show="store.isLoggedIn"
+          class="text-sm font-semibold leading-6 text-gray-900"
+        >
+          {{ $t('signOut') }}
+        </button>
       </PopoverGroup>
     </nav>
-    <Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
+    <CustomDialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
       <div class="fixed inset-0 z-10" />
       <DialogPanel
         class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
       >
         <div class="flex items-center justify-between">
           <a href="#" class="-m-1.5 p-1.5">
-            <span class="sr-only">Your Company</span>
             <img class="h-8 w-auto" src="/logo_vue.png" alt="" />
           </a>
           <button
@@ -108,7 +112,6 @@
             class="-m-2.5 rounded-md p-2.5 text-gray-700"
             @click="mobileMenuOpen = false"
           >
-            <span class="sr-only">Close menu</span>
             <XMarkIcon class="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
@@ -137,35 +140,42 @@
                 </DisclosurePanel>
               </Disclosure>
               <RouterLink
-                :to="'/about'"
+                :to="RoutePath.ABOUT"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
               >
                 {{ $t('about') }}
               </RouterLink>
               <RouterLink
-                :to="'/stock'"
+                :to="RoutePath.STOCK"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
               >
                 {{ $t('stock') }}
               </RouterLink>
               <RouterLink
-                :to="'/crypto'"
+                :to="RoutePath.CRYPTO"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
               >
                 {{ $t('crypto') }}
               </RouterLink>
+              <button
+                @click="onClickSignOut"
+                v-show="store.isLoggedIn"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+              >
+                {{ $t('signOut') }}
+              </button>
             </div>
           </div>
         </div>
       </DialogPanel>
-    </Dialog>
+    </CustomDialog>
   </header>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts">
 import { ref } from 'vue'
 import {
-  Dialog,
+  Dialog as CustomDialog,
   DialogPanel,
   Disclosure,
   DisclosureButton,
@@ -177,6 +187,8 @@ import {
 } from '@headlessui/vue'
 import { Bars3Icon, CalculatorIcon, ChartPieIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/vue/20/solid'
+import { useAuthStore } from '@/stores/auth'
+import { RouteName, RoutePath } from '@/router/route'
 
 const features = [
   {
@@ -186,9 +198,9 @@ const features = [
     icon: ChartPieIcon
   },
   {
-    name: 'calculator',
+    name: RouteName.CALCULATOR,
     description: 'Calculate your dividend',
-    href: '/calculator',
+    href: RoutePath.CALCULATOR,
     icon: CalculatorIcon
   }
 ]
@@ -197,5 +209,46 @@ const callsToAction = [
   { name: 'Contact sales', href: '#', icon: PhoneIcon }
 ]
 
-const mobileMenuOpen = ref(false)
+export default {
+  components: {
+    CustomDialog,
+    DialogPanel,
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel,
+    Popover,
+    PopoverButton,
+    PopoverGroup,
+    PopoverPanel,
+    Bars3Icon,
+    XMarkIcon,
+    ChevronDownIcon,
+    RoutePath
+  },
+  setup() {
+    const mobileMenuOpen = ref(false)
+    return {
+      mobileMenuOpen,
+      features,
+      callsToAction
+    }
+  },
+  data() {
+    return {
+      RoutePath,
+      RouteName
+    }
+  },
+  methods: {
+    onClickSignOut() {
+      this.store.signOut(() => {
+        this.$router.push({ path: RoutePath.SIGN_IN, replace: true })
+        this.mobileMenuOpen = false
+      })
+    }
+  },
+  computed: {
+    store: () => useAuthStore()
+  }
+}
 </script>

@@ -1,52 +1,53 @@
 import HomeView from '@/views/HomeView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import { RouteName, RoutePath } from './route'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: RoutePath.HOME,
+      name: RouteName.HOME,
       component: HomeView
     },
     {
-      path: '/sign-in',
-      name: 'signIn',
+      path: RoutePath.SIGN_IN,
+      name: RouteName.SIGN_IN,
       component: () => import('../views/SignInView.vue')
     },
     {
-      path: '/sign-up',
-      name: 'signUp',
+      path: RoutePath.SIGN_UP,
+      name: RouteName.SIGN_UP,
       component: () => import('../views/SignUpView.vue')
     },
     {
-      path: '/forgot-password',
-      name: 'forgotPassword',
+      path: RoutePath.FORGOT_PASSWORD,
+      name: RouteName.FORGOT_PASSWORD,
       component: () => import('../views/ForgotPasswordView.vue')
     },
     {
-      path: '/about',
-      name: 'about',
+      path: RoutePath.ABOUT,
+      name: RouteName.ABOUT,
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/calculator',
-      name: 'calculator',
+      path: RoutePath.CALCULATOR,
+      name: RouteName.CALCULATOR,
       component: () => import('../views/CalculatorView.vue')
     },
     {
-      path: '/stock',
-      name: 'stock',
+      path: RoutePath.STOCK,
+      name: RouteName.STOCK,
       component: () => import('../views/StockView.vue')
     },
     {
-      path: '/crypto',
-      name: 'crypto',
+      path: RoutePath.CRYPTO,
+      name: RouteName.CRYPTO,
       component: () => import('../views/CryptoView.vue')
     },
     {
-      path: '/:pathMatch(.*)*',
-      name: '404',
+      path: RoutePath.NOT_FOUND,
+      name: RouteName.NOT_FOUND,
       component: () => import('../views/404View.vue')
     }
   ]

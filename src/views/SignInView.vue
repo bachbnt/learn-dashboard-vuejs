@@ -34,10 +34,10 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios'
 import AuthForm from '@/components/AuthForm.vue'
-import { toast } from 'vue3-toastify'
 import { RouterLink } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
+import { RoutePath } from '@/router/route'
 
 const fields = [
   { name: 'email', type: 'email', autocomplete: 'email' },
@@ -54,17 +54,16 @@ export default {
   },
   props: {},
   methods: {
-    onSubmit(email: string, password: string) {
-      axios
-        .post('http://localhost:3000/auth/login', { email, password })
-        .then((res) => {
-          toast.success(res.statusText)
-          console.log(res)
-        })
-        .catch((err) => {
-          toast.error(err.message)
-        })
+    onSubmit(fieldModels: any) {
+      console.log(import.meta.env.BASE_API_URL)
+      const { email, password } = fieldModels
+      this.store.signIn(email?.value, password?.value, () => {
+        this.$router.push({ path: RoutePath.HOME, replace: true })
+      })
     }
+  },
+  computed: {
+    store: () => useAuthStore()
   }
 }
 </script>
