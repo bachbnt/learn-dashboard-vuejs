@@ -12,7 +12,7 @@
         <template v-slot:above-button>
           <div class="text-sm mt-3 flex justify-end">
             <RouterLink
-              :to="'/forgot-password'"
+              :to="RoutePath.FORGOT_PASSWORD"
               class="font-semibold text-indigo-600 hover:text-indigo-500"
               >{{ $t('forgotPassword') }}
             </RouterLink>
@@ -22,7 +22,7 @@
           <p class="mt-4 text-center text-sm text-gray-500">
             {{ $t('signInSubtitle') }}
             <RouterLink
-              :to="'/sign-up'"
+              :to="RoutePath.SIGN_UP"
               class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
               >{{ $t('signUp') }}
             </RouterLink>
@@ -48,14 +48,15 @@ export default {
   setup() {
     return { fields }
   },
+  data() {
+    return { RoutePath }
+  },
   components: {
     AuthForm,
     RouterLink
   },
-  props: {},
   methods: {
     onSubmit(fieldModels: any) {
-      console.log(import.meta.env.BASE_API_URL)
       const { email, password } = fieldModels
       this.store.signIn(email?.value, password?.value, () => {
         this.$router.push({ path: RoutePath.HOME, replace: true })

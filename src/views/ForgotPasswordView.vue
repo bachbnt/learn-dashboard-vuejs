@@ -13,9 +13,8 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios'
 import AuthForm from '@/components/AuthForm.vue'
-import { toast } from 'vue3-toastify'
+import { useAuthStore } from '@/stores/auth'
 
 const fields = [{ name: 'email', type: 'email', autocomplete: 'email' }]
 
@@ -26,19 +25,14 @@ export default {
   components: {
     AuthForm
   },
-  props: {},
   methods: {
-    onSubmit(email: string) {
-      axios
-        .post('http://localhost:3000/auth/forgot-password', { email })
-        .then((res) => {
-          toast.success(res.statusText)
-          console.log(res)
-        })
-        .catch((err) => {
-          toast.error(err.message)
-        })
+    onSubmit(fieldModels: any) {
+      const { email } = fieldModels
+      this.store.resetPassword(email?.value)
     }
+  },
+  computed: {
+    store: () => useAuthStore()
   }
 }
 </script>

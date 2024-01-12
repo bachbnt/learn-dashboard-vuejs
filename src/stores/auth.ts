@@ -30,6 +30,28 @@ export const useAuthStore = defineStore('auth', () => {
       })
   }
 
+  const signUp = (email: string, password: string, fullName: string) => {
+    apiClient
+      .post(Endpoint.SIGN_IN, { email, password, fullName })
+      .then((res) => {
+        toast.success(res.data.message)
+      })
+      .catch((err) => {
+        toast.error(err.message)
+      })
+  }
+
+  const resetPassword = (email: string) => {
+    apiClient
+      .post(Endpoint.FORGOT_PASSWORD, { email })
+      .then((res) => {
+        toast.success(res.data.message)
+      })
+      .catch((err) => {
+        toast.error(err.message)
+      })
+  }
+
   const signOut = (callback?: Function) => {
     cookie.removeItem(Cookie.ACCESS_TOKEN)
     isLoggedIn.value = false
@@ -44,6 +66,8 @@ export const useAuthStore = defineStore('auth', () => {
     isLoggedIn,
     checkAuth,
     signIn,
+    signUp,
+    resetPassword,
     signOut
   }
 })
