@@ -26,6 +26,9 @@ const i18n = createI18n({
       signOut: 'Sign out',
       email: 'Email',
       password: 'Password',
+      rePassword: 'Re-password',
+      oldPassword: 'Old password',
+      newPassword: 'New password',
       fullName: 'Full name',
       forgotPassword: 'Forgot password?',
       signInTitle: 'Welcome to BFin',
@@ -35,8 +38,13 @@ const i18n = createI18n({
       and: 'and',
       termOfService: 'Term of Service',
       privacyPolicy: 'Privacy Policy',
-      forgotPasswordTitle: 'Reset Password',
-      confirm: 'Confirm'
+      forgotPasswordTitle: 'Forgot Password',
+      resetPasswordTitle: 'Reset Password',
+      changePasswordTitle: 'Change Password',
+      confirm: 'Confirm',
+      account: 'Account',
+      profile: 'Profile',
+      changePassword: 'Change password'
     },
     vi: {
       feature: 'Tính năng',
@@ -61,6 +69,9 @@ const i18n = createI18n({
       signOut: 'Đăng xuất',
       email: 'Email',
       password: 'Mật khẩu',
+      rePassword: 'Nhập lại mật khẩu',
+      oldPassword: 'Mật khẩu cũ',
+      newPassword: 'Mật khẩu mới',
       fullName: 'Họ và tên',
       forgotPassword: 'Quên mật khẩu?',
       signInTitle: 'Chào mừng đến với BFin',
@@ -70,8 +81,13 @@ const i18n = createI18n({
       and: 'và',
       termOfService: 'Điều Khoản Dịch Vụ',
       privacyPolicy: 'Chính Sách Bảo Mật',
-      forgotPasswordTitle: 'Đặt Lại Mật Khẩu',
-      confirm: 'Xác nhận'
+      forgotPasswordTitle: 'Quên Mật Khẩu',
+      resetPasswordTitle: 'Đặt Lại Mật Khẩu',
+      changePasswordTitle: 'Thay Đổi Mật Khẩu',
+      confirm: 'Xác nhận',
+      account: 'Tài khoản',
+      profile: 'Hồ sơ',
+      changePassword: 'Thay đổi mật khẩu'
     }
   }
 })

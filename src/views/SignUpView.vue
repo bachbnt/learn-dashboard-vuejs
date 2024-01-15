@@ -57,7 +57,7 @@ export default {
   methods: {
     onSubmit(fieldModels: any) {
       const { email, password, fullName } = fieldModels
-      this.store.signIn(email?.value, password?.value, fullName?.value)
+      this.store.signUp(email?.value, password?.value, fullName?.value)
     }
   },
   computed: {
