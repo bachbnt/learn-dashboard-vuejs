@@ -9,6 +9,7 @@ export class RoutePath {
   static readonly CALCULATOR = '/calculator'
   static readonly STOCK = '/stock'
   static readonly CRYPTO = '/crypto'
+  static readonly MANAGEMENT = '/management'
   static readonly NOT_FOUND = '/:pathMatch(.*)*'
 }
 
@@ -23,5 +24,6 @@ export class RouteName {
   static readonly CALCULATOR = 'calculator'
   static readonly STOCK = 'stock'
   static readonly CRYPTO = 'crypto'
+  static readonly MANAGEMENT = 'management'
   static readonly NOT_FOUND = '404'
 }

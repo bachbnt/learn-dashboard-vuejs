@@ -46,6 +46,11 @@ const router = createRouter({
       component: () => import('../views/CalculatorView.vue')
     },
     {
+      path: RoutePath.MANAGEMENT,
+      name: RouteName.MANAGEMENT,
+      component: () => import('../views/UsersView.vue')
+    },
+    {
       path: RoutePath.STOCK,
       name: RouteName.STOCK,
       component: () => import('../views/StockView.vue')

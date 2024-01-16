@@ -4,12 +4,13 @@ const i18n = createI18n({
   locale: 'vi',
   messages: {
     en: {
-      feature: 'Tính năng',
-      about: 'Về',
-      stock: 'Chứng khoán',
-      crypto: 'Tiền ảo',
-      analytic: 'Thống kê',
-      calculator: 'Máy tính',
+      feature: 'Feature',
+      about: 'About',
+      stock: 'Stock',
+      crypto: 'Crypto',
+      analytic: 'Analytic',
+      calculator: 'Calculator',
+      management: 'Management',
       pTitle: 'Giá trước điều chỉnh',
       cTitle: 'Cổ tức bằng tiền mặt',
       p1Title: 'Giá phát hành thêm',
@@ -44,7 +45,14 @@ const i18n = createI18n({
       confirm: 'Confirm',
       account: 'Account',
       profile: 'Profile',
-      changePassword: 'Change password'
+      changePassword: 'Change password',
+      notification: 'Notification',
+      add: 'Add',
+      edit: 'Edit',
+      delete: 'Delete',
+      id: 'ID',
+      role: 'Role',
+      actions: 'Actions'
     },
     vi: {
       feature: 'Tính năng',
@@ -53,6 +61,7 @@ const i18n = createI18n({
       crypto: 'Tiền ảo',
       analytic: 'Phân tích',
       calculator: 'Máy tính',
+      management: 'Quản lý',
       pTitle: 'Giá trước điều chỉnh',
       cTitle: 'Cổ tức bằng tiền mặt',
       p1Title: 'Giá phát hành thêm',
@@ -87,7 +96,14 @@ const i18n = createI18n({
       confirm: 'Xác nhận',
       account: 'Tài khoản',
       profile: 'Hồ sơ',
-      changePassword: 'Thay đổi mật khẩu'
+      changePassword: 'Thay đổi mật khẩu',
+      notification: 'Thông báo',
+      add: 'Thêm',
+      edit: 'Sửa',
+      delete: 'Xoá',
+      id: 'ID',
+      role: 'Vai trò',
+      actions: 'Thao tác'
     }
   }
 })

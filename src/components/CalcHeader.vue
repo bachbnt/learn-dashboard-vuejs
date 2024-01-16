@@ -19,7 +19,7 @@
         </button>
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-12">
-        <Popover class="relative">
+        <Popover class="relative m-auto">
           <PopoverButton
             class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
           >
@@ -74,7 +74,7 @@
         <RouterLink :to="RoutePath.CRYPTO" class="text-sm font-semibold leading-6 text-gray-900">
           {{ $t('crypto') }}
         </RouterLink>
-        <Popover class="relative">
+        <Popover class="relative m-auto">
           <PopoverButton
             class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
           >
@@ -121,7 +121,7 @@
                 <a
                   v-for="item in callsToAction"
                   :key="item.name"
-                  :href="item.href"
+                  @click="onClick(item.name)"
                   class="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
                 >
                   <component
@@ -169,10 +169,9 @@
                 </DisclosureButton>
                 <DisclosurePanel class="mt-2 space-y-2">
                   <DisclosureButton
-                    v-for="item in [...features, ...callsToAction]"
+                    v-for="item in [...features]"
                     :key="item.name"
                     as="a"
-                    :href="item.href"
                     class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >{{ $t(item.name) }}</DisclosureButton
                   >
@@ -211,7 +210,6 @@
                     v-for="item in [...accounts, ...callsToAction]"
                     :key="item.name"
                     as="a"
-                    :href="item.href"
                     class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >{{ $t(item.name) }}</DisclosureButton
                   >
@@ -241,9 +239,11 @@ import {
 import { Bars3Icon, CalculatorIcon, ChartPieIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import {
   ChevronDownIcon,
-  LockClosedIcon,
   UserCircleIcon,
-  ArrowRightStartOnRectangleIcon
+  LockClosedIcon,
+  BellIcon,
+  ArrowRightStartOnRectangleIcon,
+  TableCellsIcon
 } from '@heroicons/vue/20/solid'
 import { useAuthStore } from '@/stores/auth'
 import { RouteName, RoutePath } from '@/router/route'
@@ -260,6 +260,12 @@ const features = [
     description: 'Calculate your dividend',
     href: RoutePath.CALCULATOR,
     icon: CalculatorIcon
+  },
+  {
+    name: RouteName.MANAGEMENT,
+    description: 'Manage all users',
+    href: RoutePath.MANAGEMENT,
+    icon: TableCellsIcon
   }
 ]
 
@@ -277,7 +283,10 @@ const accounts = [
     icon: LockClosedIcon
   }
 ]
-const callsToAction = [{ name: 'signOut', href: '#', icon: ArrowRightStartOnRectangleIcon }]
+const callsToAction = [
+  { name: 'notification', icon: BellIcon },
+  { name: 'signOut', icon: ArrowRightStartOnRectangleIcon }
+]
 
 export default {
   components: {
@@ -302,8 +311,8 @@ export default {
     return {
       mobileMenuOpen,
       features,
-      callsToAction,
-      accounts
+      accounts,
+      callsToAction
     }
   },
   data() {
@@ -313,11 +322,15 @@ export default {
     }
   },
   methods: {
-    onClickSignOut() {
-      this.store.signOut(() => {
-        this.$router.push({ path: RoutePath.SIGN_IN, replace: true })
-        this.mobileMenuOpen = false
-      })
+    onClick(name: string) {
+      if (name === 'signOut') {
+        this.store.signOut(() => {
+          this.$router.push({ path: RoutePath.SIGN_IN, replace: true })
+          this.mobileMenuOpen = false
+        })
+      } else if (name === 'notification') {
+        alert('notification')
+      }
     }
   },
   computed: {
