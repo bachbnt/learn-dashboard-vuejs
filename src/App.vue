@@ -9,5 +9,3 @@
 import { RouterView } from 'vue-router'
 import CalcHeader from '@/components/CalcHeader.vue'
 </script>
-
-<style></style>
