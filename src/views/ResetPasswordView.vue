@@ -15,6 +15,7 @@
 <script lang="ts">
 import AuthForm from '@/components/AuthForm.vue'
 import { useAuthStore } from '@/stores/auth'
+import { RoutePath } from '@/router/route'
 
 const fields = [
   { name: 'password', type: 'password', autocomplete: 'current-password' },
@@ -35,7 +36,9 @@ export default {
         return
       }
       const token = this.$route.query.token as string
-      this.store.resetPassword(token, password?.value)
+      this.store.resetPassword(token, password?.value, () => {
+        this.$router.push({ path: RoutePath.HOME, replace: true })
+      })
     }
   },
   computed: {

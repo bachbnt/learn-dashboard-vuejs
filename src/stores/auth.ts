@@ -53,10 +53,11 @@ export const useAuthStore = defineStore('auth', () => {
       })
   }
 
-  const resetPassword = (token: string, password: string) => {
+  const resetPassword = (token: string, password: string, callback?: Function) => {
     apiClient
       .post(Endpoint.RESET_PASSWORD, { token, password })
       .then((res) => {
+        callback?.()
         toast.success(res.data?.message)
       })
       .catch((err) => {
