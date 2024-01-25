@@ -4,5 +4,7 @@ export class Endpoint {
   static readonly FORGOT_PASSWORD = 'auth/forgot-password'
   static readonly RESET_PASSWORD = 'auth/reset-password'
   static readonly CHANGE_PASSWORD = 'auth/change-password'
+  static readonly UPDATE_PASSWORD = 'auth/update-profile'
+  static readonly PROFILE = 'auth/profile'
   static readonly USERS = 'users'
 }

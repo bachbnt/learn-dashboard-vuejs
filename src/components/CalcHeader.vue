@@ -271,9 +271,9 @@ const features = [
 
 const accounts = [
   {
-    name: 'profile',
-    description: 'View your information',
-    href: '#',
+    name: RouteName.UPDATE_PROFILE,
+    description: 'Update your profile',
+    href: RoutePath.UPDATE_PROFILE,
     icon: UserCircleIcon
   },
   {

@@ -58,7 +58,7 @@ export default {
   methods: {
     onSubmit(fieldModels: any) {
       const { email, password } = fieldModels
-      this.store.signIn(email?.value, password?.value, () => {
+      this.store.signIn(email?.value, password?.value).then(() => {
         this.$router.push({ path: RoutePath.HOME, replace: true })
       })
     }

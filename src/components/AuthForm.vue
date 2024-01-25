@@ -8,6 +8,7 @@
       :name="field.name"
       :type="field.type"
       :autocomplete="field.autocomplete"
+      :disabled="field.disabled ?? false"
       required="true"
       v-model="fieldModels[field.name].value"
     />
@@ -25,7 +26,7 @@ export default {
     const fieldModels = this.fields.reduce((obj, item) => {
       return {
         ...obj,
-        [item.name]: { name: item.name, value: '' }
+        [item.name]: { name: item.name, value: item.value ?? '' }
       }
     }, {})
     return {
